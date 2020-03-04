@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:http/http.dart' as http;
 
 class QRPage extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class QRPage extends StatefulWidget {
 class _QRPageState extends State<QRPage> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   var qrText = "";
+  var prevText = "";
   var status = 0;
   QRViewController controller;
 
@@ -51,14 +53,33 @@ class _QRPageState extends State<QRPage> {
   void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
     controller.scannedDataStream.listen((scanData) {
+      if (scanData == qrText) {
+        print("QRTEXT:DUPLICATE");
+      } else {
+        print("QRTEXT:$scanData");
+        setPersonData(scanData);
+      }
+      qrText = scanData;
+      setState(() {});
+    });
+  }
+
+  setPersonData(String id) async {
+    print("Setting Data");
+    var response = await http.post(
+        'http://192.168.1.11:3000/registration/updatePerson',
+        body: {'id': id, 'round': '0'});
+    print("Response: ${response.statusCode}");
+    if (response.statusCode == 200) {
       setState(() {
         status = 1;
-        qrText = scanData;
       });
-      Future.delayed(Duration(seconds: 1), () {
-        setState(() {
-          status = 0;
-        });
+    } else {
+      status = 2;
+    }
+    Future.delayed(Duration(seconds: 1), () {
+      setState(() {
+        status = 0;
       });
     });
   }
