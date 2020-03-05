@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "763064306598",
+    "firebase_url": "https://qr-reg-ieee.firebaseio.com",
+    "project_id": "qr-reg-ieee",
+    "storage_bucket": "qr-reg-ieee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763064306598:android:778cd8e99face8ba6b9d67",
+        "android_client_info": {
+          "package_name": "com.example.ieee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763064306598-2fd8p3ncoqprtkunb4jnh0if92bkaocm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAib19Ve_BjRzpQdSLAq5QTWrbqJahZio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763064306598-2fd8p3ncoqprtkunb4jnh0if92bkaocm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
