@@ -69,7 +69,7 @@ class _QRPageState extends State<QRPage> {
     var response = await http.post(
         'http://192.168.1.11:3000/registration/updatePerson',
         body: {'id': id, 'round': '0'});
-    print("Response: ${response.statusCode}");
+    print("Response: ${response.body.runtimeType}");
     if (response.statusCode == 200) {
       setState(() {
         status = 1;
