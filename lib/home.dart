@@ -19,7 +19,8 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           QRPage(),
-          ListPage(),
+          // ListPage(),
+          Container(),
         ],
         onPageChanged: (i) {
           setState(() {
